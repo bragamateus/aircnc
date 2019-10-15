@@ -10,12 +10,10 @@ const SpotSchema = new mongoose.Schema({
         ref: 'User'
     }
 
- }, {
-        toJSON:{
-            virtuals: true,
-        
-    },
-
+},{
+    toJSON:{
+        virtuals:true
+    }
 });
 
 SpotSchema.virtual('thumbnail_url').get(function(){
