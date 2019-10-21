@@ -1,20 +1,34 @@
-import React, { useState } from 'react';
-import {KeyboardAvoidingView, View, 
+import React, { useState, useEffect } from 'react';
+import {KeyboardAvoidingView, View, AsyncStorage, 
     Image, Text, TextInput, 
     StyleSheet, TouchableOpacity } from 'react-native';
 
 import logo from '../assets/logo.png';
 import api from '../services/api';
+import { Platform } from '@unimodules/core';
 
-export default function Login(){
+export default function Login({ navigation }){
     const [email, setEmail] = useState('');
     const [techs, setTechs] = useState('');
+
+    useEffect(() => {
+        AsyncStorage.getItem('user').then(user => {
+            if(user){
+                navigation.navigate('List');
+            }
+        })
+    }, []);
 
 async function handleSubmit(){
     const response = await api.post('/sessions', { email });
 
     const {_id} = response.data;
-    console.log(_id);
+
+    await AsyncStorage.setItem('user', _id);
+    await AsyncStorage.setItem('techs', techs);
+
+    navigation.navigate('List');
+
 }
 
     return(
