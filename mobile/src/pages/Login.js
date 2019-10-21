@@ -3,14 +3,12 @@ import {KeyboardAvoidingView, View,
     Image, Text, TextInput, 
     StyleSheet, TouchableOpacity } from 'react-native';
 
-// import api from '../services/api';    
-
 import logo from '../assets/logo.png';
 import api from '../services/api';
 
 export default function Login(){
-    const [email, setEmail] = useState[''];
-    const [techs, setTechs] = useState[''];
+    const [email, setEmail] = useState('');
+    const [techs, setTechs] = useState('');
 
 async function handleSubmit(){
     const response = await api.post('/sessions', { email });
