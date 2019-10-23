@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {KeyboardAvoidingView, View, AsyncStorage, 
-    Image, Text, TextInput, 
-    StyleSheet, TouchableOpacity } from 'react-native';
+import { KeyboardAvoidingView, View, AsyncStorage, 
+         Image, Text, TextInput, 
+         StyleSheet, TouchableOpacity } from 'react-native';
 
 import logo from '../assets/logo.png';
 import api from '../services/api';
